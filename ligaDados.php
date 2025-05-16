@@ -149,9 +149,17 @@ class ligaDados{
 		$stmt->bindValue(6,$imagem);
 		
 		if ($stmt->execute()) {
-			echo "Produto inserido com sucesso!";
 			header("location: produtos.php");
 		} 
+	}
+
+	function listar_produtos_edit($id){
+		$sql = "SELECT * FROM produtos, plataforma WHERE produtos.n_produto = :id and plataforma.n_plataforma = produtos.n_plataforma";
+		
+		$stmt = $this->liga->prepare($sql);
+		$stmt->bindParam(':id',$id);
+		$stmt->execute();
+		return $stmt->fetchAll();
 	}
 }
 ?>

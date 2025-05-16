@@ -1,3 +1,11 @@
+<?php
+session_start();
+if (!(isset($_SESSION['login']))) {
+  // Utilizador não autenticado
+} else {
+
+}
+?>
 <!DOCTYPE html>
 <html lang="pt">
 <head>
@@ -20,7 +28,14 @@
                         } ?>
                         <li><a href="contactos.php">Contactos</a></li>
                     </ul>
-                    <button id="form-open" class="login_button">Login</button>
+                     <?php   
+                    if (isset($_SESSION['login'])) { 
+                            echo '<form action="registar.php" method="post" >
+                            <button class="login_button" type="submit" name="logout">Logout</button>
+                            </form>';
+                    }else{
+                        echo '<button id="form-open" class="login_button">Login</button>';
+                    }  ?>
                 </nav>
                 <?php include ('login.php'); ?>
             </div>

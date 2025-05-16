@@ -40,6 +40,11 @@ if (isset($_GET['ap'])){
   $db->apagar_produto($_GET['ap']);
 }
 
+//Apagar Produto
+if (isset($_GET['ed'])){
+  $db->listar_produtos_edit($_GET['ed']);
+}
+
 //Inserir 
 if (isset($_POST['inserir'])) {
   

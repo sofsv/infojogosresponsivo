@@ -57,6 +57,7 @@ nav {
   width: 100%;
   display: flex;
   justify-content: center;
+  align-items: center;
 }
 
 nav ul {
@@ -65,6 +66,7 @@ nav ul {
   gap: 40px;
   flex-wrap: wrap;
   justify-content: center;
+  flex-grow: 1;
 }
 
 nav ul li a {
@@ -82,21 +84,29 @@ nav ul li a.active {
   color: #0da8f0;
 }
 
+nav form {
+    align-items: center;
+    display: flex; /* Mantém o botão alinhado */
+    justify-content: flex-end;
+}
+
 /* Botão de Login */
 .login_button {
-  background-color: #0da8f0;
-  color: #fff;
-  border: none;
-  padding: 10px 15px;
+  background-color: transparent;
+  font-weight: 500;
+  color: #0da8f0;
+  border: 2px solid #0da8f0;
+  padding: 10px 22px;
   font-size: 16px;
   cursor: pointer;
-  border-radius: 5px;
-  transition: background 0.3s ease;
+  border-radius: 6px;
+  transition: background, color 0.3s;
   margin-left: auto; /* Mantém alinhado à direita */
 }
 
 .login_button:hover {
-  background-color: #008CBA;
+  background: #0da8f0;
+  color: #fff;
 }
 
 /* Estilos do formulário */
@@ -109,7 +119,8 @@ nav ul li a.active {
   padding: 25px;
   transform: translate(-50%, -50%) scale(1);
   z-index: 101;
-  background: rgba(14,49,226,0.9); /* Ajusta o fundo para combinar com a página */
+  background: rgba(252, 252, 252, 1); 
+  color: #0b0217;
   border-radius: 12px;
   box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
   opacity: 0;
@@ -124,9 +135,38 @@ nav ul li a.active {
   transform: translate(-50%, -50%) scale(1);
 }
 
+.form {
+  display: block;
+  top: 50%;
+  left: 50%;
+}
+
+
+.signup_form {
+  display: none;
+}
+
+.form_container.active .signup_form {
+  display: block;
+}
+
+.form_container.active .login_form {
+  display: none;
+}
+
+.form_close {
+  position: absolute;
+  top: 10px;
+  right: 20px;
+  font-size: 22px;
+  color: #0b0217;
+  opacity: 0.7;
+  cursor: pointer;
+}
+
 .form_container h2 {
   font-size: 22px;
-  color: #FFD700;
+  color: #000000;
   text-align: center;
   margin-bottom: 20px;
 }
@@ -145,9 +185,8 @@ nav ul li a.active {
   outline: none;
   padding: 0 30px;
   color: #333;
-  border: 2px solid #FFD700;
+  border-bottom: 1.5px solid #aaaaaa;
   transition: border-color 0.2s ease;
-  border-radius: 8px;
 }
 
 .input_box input:focus {
@@ -175,19 +214,27 @@ nav ul li a.active {
 
 /* Botões do formulário */
 .button {
-  background-color: #FFD700;
-  color: #333;
+  background-color: #0f85e6;
+  color: #ffffff;
   border: none;
   padding: 10px 15px;
   font-size: 16px;
   cursor: pointer;
   border-radius: 5px;
   transition: background 0.3s ease;
-  margin-top: 20px;
+  width: 100%;
+  margin-top: 30px;
 }
 
 .button:hover {
-  background-color: #F7C700;
+  background-color: #008CBA;
+}
+
+/* Texto de Login/Registo */
+.login_signup {
+  font-size: 16px;
+  text-align: center;
+  margin-top: 15px;
 }
 
 /* Conteúdo Principal */
@@ -210,6 +257,39 @@ section {
   padding-top: 140px; /* Ajuste maior para garantir que o conteúdo não seja sobreposto */
 }
 
+section table {
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+  border-collapse: collapse;
+}
+
+section table td {
+  text-align: left;
+  padding: 8px;
+}
+
+section table td img{
+   display: block;
+   margin-left: auto;
+   margin-right: auto;
+}
+
+section table th {
+  text-align: center;
+  padding: 8px;
+}
+
+section table tr:nth-child(odd):not(:first-child) {
+  background-color: rgba(170, 170, 170, 0.3);
+
+}
+
+.conteudo {
+    transition: opacity 0.3s ease-in-out;
+}
+
+
 /* Footer */
 footer {
   background-color: #ffffff;
@@ -231,6 +311,67 @@ footer img {
   display: block;
   margin: 0 auto;
   margin-bottom: 10px;
+}
+
+/*botao inserir imagem*/
+.input_box input[type="file"] {
+  width: 100%;
+  padding: 0;
+  border: none;
+  background: none;
+  color: white; /* texto "Nenhum ficheiro selecionado" */
+  background-color: transparent; /* para combinar com o fundo */
+}
+
+input[type=file]::file-selector-button {
+  padding: 10px 22px;
+  border: 2px solid #0da8f0;
+  background: #0da8f0;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 500;
+  color: #fff;
+  transition: background 0.3s, color 0.3s;
+  margin-left: 0;
+}
+
+input[type=file]::file-selector-button:hover {
+  background: transparent;
+  border: 2px solid #fff;
+}
+
+input[type=file]::file-selector-button:active {
+  transform: scale(0.98);
+}
+
+/*botao inserir */
+.button_inserir {
+  padding: 10px 22px;
+  border: 2px solid #0da8f0;
+  background: #0da8f0;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 500;
+  color: #fff;
+  transition: background 0.3s, color 0.3s;
+}
+
+.button_inserir:hover {
+  background: transparent;
+  border: 2px solid #fff;
+}
+
+.button_inserir:active {
+  transform: scale(0.98);
+}
+
+.botao_centro {
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  margin-top: 20px;
 }
 
 /* Responsivo */

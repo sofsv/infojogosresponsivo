@@ -3,6 +3,7 @@
     include('ligaDados.php');
     $db = new ligaDados();
     $dados = $db->listar_produtos(); 
+    $dados2 = $db->listar_produtos_edit(10); 
 ?>
 
 <!DOCTYPE html>
@@ -27,63 +28,105 @@
                         } ?>
                         <li><a href="contactos.php">Contactos</a></li>
                     </ul>
-                    <button id="form-open" class="login_button">Login</button>
+                     <?php   
+                      if (isset($_SESSION['login'])) { 
+                              echo '<form action="registar.php" method="post" >
+                              <button class="login_button" type="submit" name="logout">Logout</button>
+                              </form>';
+                      }else{
+                          echo '<button id="form-open" class="login_button">Login</button>';
+                      }  ?>
                 </nav>
                 <?php include ('login.php'); ?>
             </div>
         </header>
 
         <main>
+          <div id="tabela" class="conteudo">
             <section>
-                <div class="bloco">
-        <br>
-        <table width="800px" align="center" border="1">
-          <tr>
-          <?php
-          if (isset($_SESSION['tipo'])) {
-            if ($_SESSION['tipo'] == 1 || $_SESSION['tipo'] == 0) {
-              echo '<td align="center" colspan="7">';
-            } else {
-              echo '<td align="center" colspan="5">';
-            }
-          }
-          ?>  
-            <h2 style="color:#FFF;" align="center">Catálogo de jogos</h2>
-            </td>
-          </tr>
+              <table>
+                <tr>
+                <?php
+                if (isset($_SESSION['tipo'])) {
+                  if ($_SESSION['tipo'] == 1 || $_SESSION['tipo'] == 0) {
+                    echo '<td align="center" colspan="7">';
+                  } else {
+                    echo '<td align="center" colspan="5">';
+                  }
+                }
+                ?>  
+                  <h2 style="color:#FFF;" align="center">Catálogo de jogos</h2>
+                  </td>
+                </tr>
 
-          <tr>
-            <td align='center'>Marca</td>
-            <td align='center'>Modelo</td>
-            <td align='center'>Preço</td>
-            <td align='center'>Descrição</td>
-            <td align='center'>Imagem</td>
-            <?php
-            if (isset($_SESSION['tipo'])) {
-              if($_SESSION['tipo'] == 1) {
-              echo "<td align='center'>Apagar</td><td align='center'>Atualizar</td>";
-              }
-            }
-            ?>
-          </tr>
-          
-          <?php 
-            foreach ($dados as $registo) {
-              echo "<tr><td align='center'>{$registo['marca']}</td>";
-              echo "<td align='center'>{$registo['modelo']}</td>";
-              echo "<td align='center'>{$registo['preco']}</td>";
-              echo "<td align='center'>{$registo['descricao']}</td>";
-              echo "<td align='center'><img src='{$registo['imagem']}' width='180px'></td>";
-              if ($_SESSION['tipo'] == 1) {
-                echo "<td align='center'><a href='registar.php?ap={$registo['n_produto']}'>teste 1</a></td>";
-                echo "<td align='center'>teste 2</td>";
-              }
-              echo "</tr>";
-            }
-          ?>
-        </table>
-      </div>
+                <tr>
+                  <th align='center'>Marca</th>
+                  <th align='center'>Modelo</th>
+                  <th align='center'>Preço</th>
+                  <th align='center'>Descrição</th>
+                  <th align='center'>Imagem</th>
+                  <?php
+                  if (isset($_SESSION['tipo'])) {
+                    if($_SESSION['tipo'] == 1) {
+                    echo "<th align='center'>Apagar</th><th align='center'>Atualizar</th>";
+                    }
+                  }
+                  ?>
+                </tr>
+                <?php 
+                  foreach ($dados as $registo) {
+                    echo "<tr><td align='center'>{$registo['marca']}</td>";
+                    echo "<td align='center'>{$registo['modelo']}</td>";
+                    echo "<td align='center'>{$registo['preco']}</td>";
+                    echo "<td align='center'>{$registo['descricao']}</td>";
+                    echo "<td align='center'><img src='{$registo['imagem']}' width='180px'></td>";
+                    if($_SESSION){
+                    if ($_SESSION['tipo'] == 1) {
+                      echo "<td align='center'><a href='registar.php?ap={$registo['n_produto']}'><img src=\"imagens/Delete.png\" width=\"30\" height=\"27\"/></a></td>";
+                      echo "<td align='center'><a onclick=\"alternarConteudo()\"><img src=\"imagens/editar.png\" width=\"30\" height=\"27\"/></td>";
+                    }
+                    echo "</tr>";
+                  }}
+                ?>
+              </table>
+              <div id="editar" class="conteudo" style="display: none;">
+                  <div class="form">
+                    <form action="registar.php" method="POST" enctype="multipart/form-data">
+                        <h2>Editar Produto</h2>
+                        <?php foreach ($dados2 as $registo2) { ?>
+                        <div class="input_box">
+                        <input type="text" name="marca" placeholder="<?php echo $registo2['marca'] ?>" required>
+                        </div>
+
+                        <div class="input_box">
+                        <input type="text" name="modelo" placeholder="<?php echo $registo2['modelo'] ?>" required>
+                        </div>
+
+                        <div class="input_box">
+                        <input type="text" name="n_plataforma" placeholder="<?php echo $registo2['plataforma'] ?>" required>
+                        </div>
+
+                        <div class="input_box">
+                        <input type="number" step="0.01" name="preco" placeholder="<?php echo $registo2['preco'] ?>" required>
+                        </div>
+
+                        <div class="input_box">
+                        <input type="text" name="descricao" placeholder="<?php echo $registo2['descricao'] ?>" required>
+                        </div>
+                        
+                        <div class="input_box">
+                        <input type="file" name="imagem" accept="image/*" required>
+                        </div>
+                        <?php } ?>
+                        <div class="botao_centro">
+                          <button class="button_inserir" type="submit" name="inserir">Cacelar</button>
+                        <button class="button_inserir" type="submit" name="inserir"  onclick="alternarConteudo()">Atualizar</button>
+                        </div>
+                    </form>
+                </div>
+              </div>
             </section>
+          </div>
         </main>
 
         <footer>
@@ -94,4 +137,19 @@
 </body>
  
 </html>
+
+<script>
+function alternarConteudo() {
+    let div1 = document.getElementById("tabela");
+    let div2 = document.getElementById("editar");
+
+    if (div1.style.display === "none") {
+        div1.style.display = "block";
+        div2.style.display = "none";
+    } else {
+        div1.style.display = "none";
+        div2.style.display = "block";
+    }
+}
+</script>
 <script src="script.js"></script>
