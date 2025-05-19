@@ -286,9 +286,12 @@ section table tr:nth-child(odd):not(:first-child) {
 }
 
 .conteudo {
-    transition: opacity 0.3s ease-in-out;
+    display: none; /* Garante que a div esteja invisível */
 }
 
+.mostrar {
+    display: block; /* Torna a div visível */
+}
 
 /* Footer */
 footer {

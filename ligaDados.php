@@ -161,5 +161,39 @@ class ligaDados{
 		$stmt->execute();
 		return $stmt->fetchAll();
 	}
+
+	function atualizar_produtos($marca,$modelo,$n_plataforma,$preco,$descricao,$id){
+		$stmt = $this->liga->prepare("UPDATE produtos SET marca = ?, modelo = ?, n_plataforma = ?, preco = ?, descricao = ? WHERE
+		n_produto = ?");
+		
+		$stmt->bindValue(1,$marca);
+		$stmt->bindValue(2,$modelo);
+		$stmt->bindValue(3,$n_plataforma);
+		$stmt->bindValue(4,$preco);
+		$stmt->bindValue(5,$descricao);
+		$stmt->bindValue(6,$id);
+
+		if ($stmt->execute()) {
+			header("location: produtos.php");
+		} 
+	}
+
+	function atualizar_produtos_img($marca,$modelo,$n_plataforma,$preco,$descricao, $img, $id){
+		$stmt = $this->liga->prepare("UPDATE produtos SET marca = ?, modelo = ?, n_plataforma = ?, preco = ?, descricao = ?, imagem = ? WHERE
+		n_produto = ?");
+		
+		$stmt->bindValue(1,$marca);
+		$stmt->bindValue(2,$modelo);
+		$stmt->bindValue(3,$n_plataforma);
+		$stmt->bindValue(4,$preco);
+		$stmt->bindValue(5,$descricao);
+		$stmt->bindValue(6,$img);
+		$stmt->bindValue(7,$id);
+
+		if ($stmt->execute()) {
+			header("location: produtos.php");
+		} 
+	}
+		
 }
 ?>
