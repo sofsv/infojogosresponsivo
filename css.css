@@ -257,6 +257,14 @@ section {
   padding-top: 140px; /* Ajuste maior para garantir que o conteúdo não seja sobreposto */
 }
 
+section h1 {
+  text-align: center;
+}
+
+section p.justificar {
+  text-align: justify;
+}
+
 section table {
   text-align: center;
   margin-left: auto;

@@ -43,16 +43,39 @@ if (!(isset($_SESSION['login']))) {
 
         <main>
             <section>
-                <h1 align="center">InfoJogos</h1>  
-                <br><br><br><br>
-                <p style="text-align:justify;">
-                    Um novo site para comprar a bom preço os jogos atuais e antigos!!!!<br>
-                    Queres os melhores jogos para PC, PlayStation ou Xbox? No InfoJogos, encontras uma vasta seleção de títulos para todas as plataformas, desde os lançamentos mais aguardados até aos clássicos intemporais.
-                    Compra de forma fácil e segura e recebe os teus jogos rapidamente para começares a jogar sem esperas. Explora a nossa coleção e encontra o teu próximo grande jogo hoje mesmo!!!!
-                </p>
-            </section>
-        </main>
+                <h1>InfoJogos</h1>  
+                <br>
+                <main>
 
+            <p class="section p.justificar">
+             É com enorme entusiasmo que apresentamos a InfoJogos, a nova loja no mercado dedicada exclusivamente ao universo dos videojogos! Se és fã de gaming, seja em PC, Xbox ou PlayStation, este é o teu novo ponto de paragem obrigatório.
+            </p>
+
+             <p class="section p.justificar">
+              A InfoJogos nasce da paixão pelos jogos e pela cultura gamer. Aqui, vais encontrar os títulos mais recentes, clássicos intemporais, acessórios de qualidade, consolas e uma equipa que fala a tua linguagem. Mais do que uma loja, queremos ser uma comunidade — um espaço onde os jogadores se sintam em casa, encontrem novidades, troquem ideias e vivam a sua paixão.
+             </p>
+
+            <p class="section p.justificarr">
+             Situada num local de fácil acesso, a nossa loja foi cuidadosamente pensada para proporcionar uma experiência de compra envolvente e personalizada. Cada canto da InfoJogos foi desenhado para que te sintas dentro de um verdadeiro universo gamer: desde as prateleiras recheadas de jogos, aos postos de demonstração e zonas temáticas.
+             </p>
+
+             <p class="section p.justificar">O que vais encontrar na InfoJogos?</p>
+             <ul>
+             <li>🎮 Jogos para PC, Xbox e PlayStation – dos lançamentos mais esperados às pérolas escondidas.</li>
+            <li>👾 Uma equipa especializada pronta a aconselhar-te com conhecimento e paixão.</li>
+            </ul>
+
+             <p class="section p.justificar">
+            Acreditamos que o gaming é mais do que um hobby — é um estilo de vida. Por isso, na InfoJogos damos prioridade à qualidade, ao bom atendimento e à partilha dessa paixão que nos une a todos. Trabalhamos com as principais marcas e editoras do mercado, garantindo sempre novidades fresquinhas e promoções irresistíveis.
+            </p>
+
+             <p class="section p.justificar">
+              Convidamos-te a visitar a InfoJogos, conhecer o nosso espaço, explorar o catálogo e fazer parte desta nova aventura. A tua próxima grande missão começa aqui!
+             </p>
+
+             <p class="section p.justificar">InfoJogos – Onde o jogo ganha vida.</p>
+            </section>
+        <main>
         <footer>
             <h5>Site feito no âmbito da PAF - 2025</h5>
             <img src="imagens/logos.png" alt="Logos" />

@@ -4,7 +4,7 @@ const formOpenBtn = document.querySelector("#form-open"),
   formCloseBtn = document.querySelector(".form_close"),
   signupBtn = document.querySelector("#signup"),
   loginBtn = document.querySelector("#loginlink"),
-  pwShowHide = document.querySelectorAll(".pw_hide");
+  pwShowHide = document.querySelectorAll(".)");
 
 formOpenBtn.addEventListener("click", () => home.classList.add("show"));
 formCloseBtn.addEventListener("click", () => home.classList.remove("show"));

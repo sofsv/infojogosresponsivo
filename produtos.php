@@ -61,7 +61,7 @@
             <tr>
               <th align='center'>Marca</th>
               <th align='center'>Modelo</th>
-              <th align='center'>Preço</th>
+              <th align='center'>Preço(€)</th>
               <th align='center'>Descrição</th>
               <th align='center'>Imagem</th>
               <?php
