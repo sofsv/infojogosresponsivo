@@ -47,14 +47,14 @@ if (isset($_GET['ed'])){
 
 //Inserir 
 if (isset($_POST['inserir'])) {
-  
+  echo "inserir imagem...";
   $marca = $_POST['marca'];
   $modelo = $_POST['modelo'];
   $n_plataforma = $_POST['n_plataforma'];
   $preco = $_POST['preco'];
   $descricao = $_POST['descricao'];
-
-  //extenções que serão permitidas para o upload dos ficheiros.
+echo ("marca: ".$marca." modelo: ".$modelo." plataforma: ".$n_plataforma." preço: ".$preco." descrição: ".$descricao);
+  //extensões que serão permitidas para o upload dos ficheiros.
   $permitidas = array("jpeg","jpg","png");
 
   //variável que irá conter a imagem $_FILES[campo do caminho][tag name]
@@ -69,12 +69,21 @@ if (isset($_POST['inserir'])) {
   ($_FILES["imagem"]["type"] == "image/png") || ($_FILES["imagem"]["type"] == "image/x-png")) && 
   ($_FILES["imagem"]["size"] < 20000000) && in_array($extensao, $permitidas)) 
   {
+    echo "<br>teste1";
     if($_FILES["imagem"]["error"] > 0){
+      echo "<br>teste2";
       //Se houver erros no upload
+      echo("ERRO: ".$_FILES["imagem"]["error"] );
     }
     else{
+      echo "<br>teste3";
       //função que permite o upload de ficheiro para o servidor
-      move_uploaded_file($_FILES["imagem"]["tmp_name"],$target_path);
+        if(move_uploaded_file($_FILES["imagem"]["tmp_name"],$target_path)){
+          echo "Arquivo enviado com sucesso!";
+        }
+        else {
+          echo "Erro ao enviar o arquivo.";
+        }
 
       $db->inserir_produto($marca,$modelo,$n_plataforma,$preco,$descricao, $target_path);
     }

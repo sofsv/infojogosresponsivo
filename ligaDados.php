@@ -150,7 +150,9 @@ class ligaDados{
 		
 		if ($stmt->execute()) {
 			header("location: produtos.php");
-		} 
+		} else{
+			echo "ERRO na BD";
+		}
 	}
 
 	function listar_produtos_edit($id){
