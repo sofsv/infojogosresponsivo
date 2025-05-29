@@ -19,7 +19,6 @@ if (isset($_POST['registar'])){
 //Efetuar o login
 if(isset($_POST['login'])){
   if(isset($_POST['usermail']) && isset($_POST['pwd'])) {
-    echo "reg: ".$_POST['usermail']."e pass ".$_POST['pwd'];
     if(!empty($_POST['pwd']) && !empty($_POST['usermail'])){
       $password1 =MD5($_POST["pwd"]);
       $db->login($_POST['usermail'],$password1);
@@ -104,7 +103,6 @@ if (isset($_POST['atualizar'])) {
   $id = $_POST['campo'];
 
   if(!empty($_POST['imagemU'])){
-    //extenções que serão permitidas para o upload dos ficheiros.
     $permitidas = array("jpeg","jpg","png");
 
     //variável que irá conter a imagem $_FILES[campo do caminho][tag name]

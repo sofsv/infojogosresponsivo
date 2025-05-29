@@ -3,7 +3,6 @@ class ligaDados{
 	private $servidor = 'localhost';
 	private $dbnome = 'bdpaf';
 	private $user = 'root';
-	private $pass = '';
 
 	public $liga;
 	
