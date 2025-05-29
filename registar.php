@@ -52,7 +52,11 @@ if (isset($_POST['inserir'])) {
   $n_plataforma = $_POST['n_plataforma'];
   $preco = $_POST['preco'];
   $descricao = $_POST['descricao'];
+<<<<<<< Updated upstream
 echo ("marca: ".$marca." modelo: ".$modelo." plataforma: ".$n_plataforma." preço: ".$preco." descrição: ".$descricao);
+=======
+
+>>>>>>> Stashed changes
   //extensões que serão permitidas para o upload dos ficheiros.
   $permitidas = array("jpeg","jpg","png");
 
@@ -103,6 +107,7 @@ if (isset($_POST['atualizar'])) {
   $id = $_POST['campo'];
 
   if(!empty($_POST['imagemU'])){
+    //extensões que serão permitidas para o upload dos ficheiros.
     $permitidas = array("jpeg","jpg","png");
 
     //variável que irá conter a imagem $_FILES[campo do caminho][tag name]
